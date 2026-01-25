@@ -3,7 +3,9 @@
 }
 body {
     width: 1200px;
-    overflow-x: auto;
+    max-width: 100%;
+    overflow-x: hidden; /* يمنع السحب يمين-يسار */
+    margin: 0 auto;
 }
 :root {
 	font-size: 62.5%;
