@@ -16,19 +16,20 @@ a{text-decoration:none;color:inherit}
 
 /* HEADER */
 header{
-display:flex;
-align-items:center;
-padding:15px 5%;
+overflow:auto;
+padding:10px 5%;
 position:relative;
 }
 header span{
+float:left;
 font-family:"Kaushan Script";
 font-size:3rem;
 }
 header ul{
+float:left;
+list-style:none;
 display:flex;
 gap:20px;
-list-style:none;
 margin-left:30px;
 padding:0;
 }
@@ -39,55 +40,72 @@ font-size:1.2rem;
 }
 #menuToggle{
 display:none;
-margin-left:auto;
+float:right;
 font-size:2.4rem;
 cursor:pointer;
 }
 
 /* HERO */
 .top{
-background:url("https://mviolet.github.io/images-repo/hair%20salon/main.png") center/cover no-repeat;
+background:url("https://mviolet.github.io/images-repo/hair%20salon/main.png") center center no-repeat;
+background-size:100%;
 height:84vw;
-padding:10% 15%;
+padding:30px 20%;
 position:relative;
 color:white;
 }
 .top h1{
+padding-top:100px;
 font-size:5em;
 text-shadow:0 0 20px #000;
 }
 .top p{text-transform:uppercase}
 .top a{
-display:inline-block;
-margin-top:20px;
+position:relative;
+top:26px;
 background:black;
-color:white;
-padding:15px 20px;
+padding:1.5rem 2rem;
 font-size:1.2rem;
+color:white;
+text-transform:uppercase;
+border:none;
 }
 
-/* OPEN HOURS (INSIDE HERO) */
+/* OPEN HOURS (ORIGINAL DESIGN) */
 #openHours{
 position:absolute;
-right:-60px;
-top:50%;
+top:200px;
+right:-50px;
 transform:rotate(90deg);
 }
 .oh-content{
 background:white;
-color:black;
-padding:10px 20px;
-border-radius:8px;
-box-shadow:0 0 20px rgba(0,0,0,.3);
+border-radius:10px;
+box-shadow:0 0 40px rgba(0,0,0,.3);
+overflow:hidden;
+text-align:center;
+}
+.oh-content h1{
+font-size:20px;
+margin:0;
+padding:15px;
+background:linear-gradient(to right,#bd3f32,#cb356b);
+color:white;
 }
 .oh-content h2{
-margin:0;
-font-size:1.4rem;
+font-size:18px;
+margin:10px 0;
 color:#c43a50;
 }
+.oh-table{
+font-size:14px;
+padding:0 20px 20px;
+text-align:left;
+}
+.oh-table td{padding:4px 10px}
 
 /* SECTIONS */
-.about,.story,.promo,.gallery{padding:10% 15%}
+.about,.story,.promo,.gallery{padding:10px 15%}
 .about section{float:left;width:33.333%;text-align:center;padding:5%}
 .about i{font-size:4rem}
 .story{background:#f3f4f6;overflow:auto}
@@ -141,39 +159,49 @@ margin-top:30px;
 
 <div id="openHours">
 <div class="oh-content">
-<h2 id="ohStatus"></h2>
+<h1>Open Hours</h1>
+<h2></h2>
+<table class="oh-table">
+<tr><td>Monday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Tuesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Wednesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Thursday</td><td>09:00–12:00, 13:00–18:55</td></tr>
+<tr><td>Friday</td><td>09:00–19:00</td></tr>
+<tr><td>Saturday</td><td>Closed</td></tr>
+<tr><td>Sunday</td><td>Closed</td></tr>
+</table>
 </div>
 </div>
-</section>
-
-<section class="about">
-<section><i class="far fa-gem"></i><h2>Expert Beauticians</h2></section>
-<section><i class="fas fa-spa"></i><h2>Quality Services</h2></section>
-<section><i class="fas fa-pump-soap"></i><h2>Beauty Products</h2></section>
-</section>
-
-<article class="story">
-<section>
-<h1>Make Your Own Momentum</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-</section>
-<img src="https://mviolet.github.io/images-repo/styling-hair.jpg">
-</article>
-
-<section class="gallery">
-<h2>Our Lookbook</h2>
 </section>
 
 <script>
-document.getElementById("menuToggle").onclick=function(){
+document.getElementById("menuToggle").addEventListener("click",function(){
 document.getElementById("menu").classList.toggle("active")
-}
+})
 
 (function(){
-var d=new Date(),h=d.getHours(),m=d.getMinutes(),now=h*60+m;
-var open=(now>=540&&now<=1140);
-document.getElementById("ohStatus").textContent=
-open?"⊙ OPEN NOW":"⊙ CLOSED";
+var dt=new Date(),
+day=dt.getDay(),
+table=document.querySelector(".oh-table"),
+tr=table.getElementsByTagName("tr"),
+hours=document.querySelectorAll(".oh-table tr td:nth-child(2)"),
+today=hours[day-1].textContent,
+h2=document.querySelector(".oh-content h2"),
+min=dt.getHours()*60+dt.getMinutes(),
+open=false;
+
+tr[day-1].style.color="rgb(196,58,80)";
+
+if(today!=="Closed"){
+today.split(", ").forEach(t=>{
+let a=t.split("–");
+let s=parseInt(a[0].split(":")[0])*60+parseInt(a[0].split(":")[1]);
+let e=parseInt(a[1].split(":")[0])*60+parseInt(a[1].split(":")[1]);
+if(min>=s&&min<=e)open=true;
+});
+}
+
+h2.textContent=open?"⊙ The store is OPEN !":"⊙ The store is CLOSED !";
 })();
 </script>
 
