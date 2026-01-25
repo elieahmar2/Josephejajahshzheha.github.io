@@ -1,12 +1,9 @@
 * {
 	box-sizing: border-box;
 }
-body {
-    width: 1200px;     /* العرض Desktop */
-    max-width: 100%;   /* يمنع المحتوى من الخروج عن الشاشة */
-    margin: 0 auto;    /* يوسّط الصفحة أفقياً */
-    overflow-x: auto;  /* يسمح بالـ scroll أفقي إذا احتاج المستخدم */
-}
+
+
+
 :root {
 	font-size: 62.5%;
 	--light: rgb(243,244,246);
