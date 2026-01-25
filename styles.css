@@ -1,7 +1,10 @@
 * {
 	box-sizing: border-box;
 }
-
+body {
+    width: 1200px;
+    overflow-x: auto;
+}
 :root {
 	font-size: 62.5%;
 	--light: rgb(243,244,246);
