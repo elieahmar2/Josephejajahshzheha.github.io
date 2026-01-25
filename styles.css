@@ -3,9 +3,10 @@
 }
 body {
     width: 1200px;
-    max-width: 100%;
-    overflow-x: hidden; /* يمنع السحب يمين-يسار */
-    margin: 0 auto;
+    transform: scale(0.35);  /* نفس قيمة initial-scale */
+    transform-origin: top left;
+    margin: 0;
+    overflow-x: hidden;
 }
 :root {
 	font-size: 62.5%;
