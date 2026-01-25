@@ -10,46 +10,51 @@
 
 <style>
 *{box-sizing:border-box}
-:root{font-size:62.5%;--light:#f3f4f6;--dark:#000}
+:root{font-size:62.5%}
 body{margin:0;font-family:Cardo,serif;font-size:1.5rem}
 a{text-decoration:none;color:inherit}
 .clear{clear:both}
 
-header{overflow:auto;padding:10px 5%}
-header span{float:left;width:70%;font-family:Kaushan Script;font-size:3rem}
-header ul{float:left;width:100%;display:flex;gap:15px;list-style:none;padding:0;margin:10px 0}
+/* HEADER */
+header{display:flex;align-items:center;padding:15px 5%}
+header span{font-family:Kaushan Script;font-size:3rem}
+header ul{display:flex;gap:20px;list-style:none;margin-left:30px;padding:0}
 header li{font-weight:700;text-transform:uppercase;font-size:1.2rem}
-.fas.fa-bars{display:none;float:right;font-size:2.2rem;cursor:pointer}
+.fas.fa-bars{display:none;margin-left:auto;font-size:2.4rem;cursor:pointer}
 
-.top{background:url("https://mviolet.github.io/images-repo/hair%20salon/main.png") center/cover no-repeat;height:84vw;padding:10% 15%;position:relative;color:white}
+/* HERO */
+.top{background:url("https://mviolet.github.io/images-repo/hair%20salon/main.png") center/cover no-repeat;
+min-height:85vh;padding:10% 15%;color:white}
 .top h1{text-shadow:0 0 20px #000;font-size:5em}
 .top p{text-transform:uppercase}
 .top a{display:inline-block;margin-top:20px;background:black;color:white;padding:15px 20px;font-size:1.2rem}
 
-.about, .story, .promo, .gallery{padding:10% 15%}
+/* SECTIONS */
+.about,.story,.promo,.gallery,#openHours{padding:8% 15%}
 .about section{float:left;width:33.333%;text-align:center;padding:5%}
 .about i{font-size:4rem}
-.story{background:var(--light);overflow:auto}
+.story{background:#f3f4f6;overflow:auto}
 .story section{float:left;width:50%;padding-right:10%}
 .story img{float:right;width:50%}
-.promo{background:url("https://mviolet.github.io/images-repo/hair%20salon/promo01.png") center/cover no-repeat;color:white;height:250px}
+.promo{background:url("https://mviolet.github.io/images-repo/hair%20salon/promo01.png") center/cover no-repeat;height:250px}
 .gallery{text-align:center}
 
-#openHours{position:absolute;right:30px;top:50%;transform:translateY(-50%)}
-.oh-content{background:white;border-radius:10px;box-shadow:0 0 40px rgba(0,0,0,.2);overflow:hidden}
+/* OPEN HOURS */
+#openHours{text-align:center}
+.oh-content{display:inline-block;background:white;border-radius:10px;box-shadow:0 0 40px rgba(0,0,0,.2);overflow:hidden}
 .oh-content h1{margin:0;padding:15px;background:linear-gradient(to right,#bd3f32,#cb356b);color:white;font-size:18px}
 .oh-content h2{margin:10px 0;color:#c43a50}
-.oh-table{padding:0 20px 20px;font-size:14px}
-.oh-table td{padding:4px 0}
+.oh-table{padding:0 20px 20px;font-size:14px;text-align:left}
+.oh-table td{padding:4px 10px}
 
+/* MOBILE */
 @media(max-width:900px){
 .story img{display:none}
 .story section{width:100%}
-#openHours{position:static;transform:none;margin-top:20px}
 }
 
 @media(max-width:670px){
-header ul{display:none;flex-direction:column}
+header ul{display:none;flex-direction:column;width:100%;margin:20px 0}
 header ul.active{display:flex}
 .fas.fa-bars{display:block}
 .about section{width:100%}
@@ -76,22 +81,6 @@ header ul.active{display:flex}
 <h1>Blonde & Highlight</h1>
 <p>Create your best look yet</p>
 <a href="#">Our Services</a>
-
-<div id="openHours">
-<div class="oh-content">
-<h1>Open Hours</h1>
-<h2></h2>
-<table class="oh-table">
-<tr><td>Monday</td><td>09:00–13:00, 14:00–18:00</td></tr>
-<tr><td>Tuesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
-<tr><td>Wednesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
-<tr><td>Thursday</td><td>09:00–12:00, 13:00–18:55</td></tr>
-<tr><td>Friday</td><td>09:00–19:00</td></tr>
-<tr><td>Saturday</td><td>Closed</td></tr>
-<tr><td>Sunday</td><td>Closed</td></tr>
-</table>
-</div>
-</div>
 </section>
 
 <section class="about clear">
@@ -114,21 +103,40 @@ header ul.active{display:flex}
 <h2>Our Lookbook</h2>
 </section>
 
+<section id="openHours">
+<div class="oh-content">
+<h1>Open Hours</h1>
+<h2></h2>
+<table class="oh-table">
+<tr><td>Monday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Tuesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Wednesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Thursday</td><td>09:00–12:00, 13:00–18:55</td></tr>
+<tr><td>Friday</td><td>09:00–19:00</td></tr>
+<tr><td>Saturday</td><td>Closed</td></tr>
+<tr><td>Sunday</td><td>Closed</td></tr>
+</table>
+</div>
+</section>
+
 <script>
 document.getElementById("menuToggle").onclick=function(){
 document.getElementById("menu").classList.toggle("active")
 }
 
 (function(){
-var dt=new Date(),day=dt.getDay(),table=document.querySelector(".oh-table"),tr=table.rows,hours=document.querySelectorAll(".oh-table tr td:nth-child(2)"),today=hours[day-1]?.textContent||"",h2=document.querySelector(".oh-content h2"),min=dt.getHours()*60+dt.getMinutes(),open=false
+var d=new Date(),day=d.getDay(),rows=document.querySelectorAll(".oh-table tr"),
+hours=document.querySelectorAll(".oh-table tr td:nth-child(2)"),
+today=hours[day-1]?.textContent||"",h2=document.querySelector(".oh-content h2"),
+min=d.getHours()*60+d.getMinutes(),open=false
 if(today.includes("–")){
-var parts=today.split(", ")
-for(let p of parts){
-let a=p.split("–")
-let s=parseInt(a[0].split(":")[0])*60+parseInt(a[0].split(":")[1])
-let e=parseInt(a[1].split(":")[0])*60+parseInt(a[1].split(":")[1])
+today.split(", ").forEach(t=>{
+let a=t.split("–")
+let s=+a[0].split(":")[0]*60+ +a[0].split(":")[1]
+let e=+a[1].split(":")[0]*60+ +a[1].split(":")[1]
 if(min>=s&&min<=e)open=true
-}}
+})
+}
 h2.textContent=open?"⊙ The store is OPEN !":"⊙ The store is CLOSED !"
 })();
 </script>
