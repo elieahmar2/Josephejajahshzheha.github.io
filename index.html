@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joseph Al Ahmar</title>
+
+<script src="https://kit.fontawesome.com/30d9eca2ce.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Kaushan+Script&family=Open+Sans&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+:root{font-size:62.5%;--light:#f3f4f6;--dark:#000}
+body{margin:0;font-family:Cardo,serif;font-size:1.5rem}
+a{text-decoration:none;color:inherit}
+.clear{clear:both}
+
+header{overflow:auto;padding:10px 5%}
+header span{float:left;width:70%;font-family:Kaushan Script;font-size:3rem}
+header ul{float:left;width:100%;display:flex;gap:15px;list-style:none;padding:0;margin:10px 0}
+header li{font-weight:700;text-transform:uppercase;font-size:1.2rem}
+.fas.fa-bars{display:none;float:right;font-size:2.2rem;cursor:pointer}
+
+.top{background:url("https://mviolet.github.io/images-repo/hair%20salon/main.png") center/cover no-repeat;height:84vw;padding:10% 15%;position:relative;color:white}
+.top h1{text-shadow:0 0 20px #000;font-size:5em}
+.top p{text-transform:uppercase}
+.top a{display:inline-block;margin-top:20px;background:black;color:white;padding:15px 20px;font-size:1.2rem}
+
+.about, .story, .promo, .gallery{padding:10% 15%}
+.about section{float:left;width:33.333%;text-align:center;padding:5%}
+.about i{font-size:4rem}
+.story{background:var(--light);overflow:auto}
+.story section{float:left;width:50%;padding-right:10%}
+.story img{float:right;width:50%}
+.promo{background:url("https://mviolet.github.io/images-repo/hair%20salon/promo01.png") center/cover no-repeat;color:white;height:250px}
+.gallery{text-align:center}
+
+#openHours{position:absolute;right:30px;top:50%;transform:translateY(-50%)}
+.oh-content{background:white;border-radius:10px;box-shadow:0 0 40px rgba(0,0,0,.2);overflow:hidden}
+.oh-content h1{margin:0;padding:15px;background:linear-gradient(to right,#bd3f32,#cb356b);color:white;font-size:18px}
+.oh-content h2{margin:10px 0;color:#c43a50}
+.oh-table{padding:0 20px 20px;font-size:14px}
+.oh-table td{padding:4px 0}
+
+@media(max-width:900px){
+.story img{display:none}
+.story section{width:100%}
+#openHours{position:static;transform:none;margin-top:20px}
+}
+
+@media(max-width:670px){
+header ul{display:none;flex-direction:column}
+header ul.active{display:flex}
+.fas.fa-bars{display:block}
+.about section{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<span>Ayesha.</span>
+<i class="fas fa-bars" id="menuToggle"></i>
+<ul id="menu">
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Lookbook</a></li>
+<li><a href="#">News</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</header>
+
+<section class="top">
+<h1>Blonde & Highlight</h1>
+<p>Create your best look yet</p>
+<a href="#">Our Services</a>
+
+<div id="openHours">
+<div class="oh-content">
+<h1>Open Hours</h1>
+<h2></h2>
+<table class="oh-table">
+<tr><td>Monday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Tuesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Wednesday</td><td>09:00–13:00, 14:00–18:00</td></tr>
+<tr><td>Thursday</td><td>09:00–12:00, 13:00–18:55</td></tr>
+<tr><td>Friday</td><td>09:00–19:00</td></tr>
+<tr><td>Saturday</td><td>Closed</td></tr>
+<tr><td>Sunday</td><td>Closed</td></tr>
+</table>
+</div>
+</div>
+</section>
+
+<section class="about clear">
+<section><i class="far fa-gem"></i><h2>Expert Beauticians</h2></section>
+<section><i class="fas fa-spa"></i><h2>Quality Services</h2></section>
+<section><i class="fas fa-pump-soap"></i><h2>Beauty Products</h2></section>
+</section>
+
+<article class="story clear">
+<section>
+<h1>Make Your Own Momentum</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+</section>
+<img src="https://mviolet.github.io/images-repo/styling-hair.jpg">
+</article>
+
+<aside class="promo"></aside>
+
+<section class="gallery">
+<h2>Our Lookbook</h2>
+</section>
+
+<script>
+document.getElementById("menuToggle").onclick=function(){
+document.getElementById("menu").classList.toggle("active")
+}
+
+(function(){
+var dt=new Date(),day=dt.getDay(),table=document.querySelector(".oh-table"),tr=table.rows,hours=document.querySelectorAll(".oh-table tr td:nth-child(2)"),today=hours[day-1]?.textContent||"",h2=document.querySelector(".oh-content h2"),min=dt.getHours()*60+dt.getMinutes(),open=false
+if(today.includes("–")){
+var parts=today.split(", ")
+for(let p of parts){
+let a=p.split("–")
+let s=parseInt(a[0].split(":")[0])*60+parseInt(a[0].split(":")[1])
+let e=parseInt(a[1].split(":")[0])*60+parseInt(a[1].split(":")[1])
+if(min>=s&&min<=e)open=true
+}}
+h2.textContent=open?"⊙ The store is OPEN !":"⊙ The store is CLOSED !"
+})();
+</script>
+
+</body>
+</html>
