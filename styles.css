@@ -4,7 +4,7 @@
 body {
     width: 1200px;
     transform: scale(0.34);
-    transform-origin: top left;
+    transform-origin: top center;
     margin: 0;
     overflow-x: hidden;
 }
