@@ -1,305 +1,751 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elegant Styles | Professional Hairdressing</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-    :root {
-        --primary-pink: #e91e63;
-        --dark-pink: #c2185b;
-        --dark-gray: #2c2c2c;
-        --light-gray: #f5f5f5;
-        --medium-gray: #424242;
-        --white: #ffffff;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: system-ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-        background: #f06d06;
-        color: white;
-        text-align: center;
-        line-height: 1.6;
-    }
-
-    .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-    }
-
-    header {
-        background-color: var(--dark-gray);
-        color: var(--white);
-        padding: 1rem 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: var(--primary-pink);
-    }
-
-    .logo span {
-        color: var(--white);
-    }
-
-    nav ul {
-        display: flex;
-        list-style: none;
-    }
-
-    nav ul li {
-        margin-left: 1.5rem;
-    }
-
-    nav ul li a {
-        color: var(--white);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-        color: var(--primary-pink);
-    }
-
-    .mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--white);
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    .hero {
-        background: linear-gradient(rgba(44,44,44,0.7), rgba(44,44,44,0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80') no-repeat center center/cover;
-        color: var(--white);
-        text-align: center;
-        padding: 6rem 0;
-    }
-
-    .hero h1 {
-        font-size: 6vw; /* من JS السابق */
-        margin-bottom: 1rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        max-width: 700px;
-        margin: 0 auto 2rem;
-    }
-
-    .btn {
-        display: inline-block;
-        background-color: var(--primary-pink);
-        color: var(--white);
-        padding: 0.8rem 1.8rem;
-        border: none;
-        border-radius: 4px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.3s;
-    }
-
-    .btn:hover {
-        background-color: var(--dark-pink);
-    }
-
-    /* Services Section */
-    .services {
-        padding: 5rem 0;
-        background-color: var(--white);
-        color: var(--dark-gray);
-    }
-
-    .section-title h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-
-    .service-card {
-        background-color: var(--light-gray);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.3s;
-    }
-
-    .service-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .service-img {
-        height: 200px;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .service-content {
-        padding: 1.5rem;
-    }
-
-    .service-content h3 {
-        margin-bottom: 0.5rem;
-    }
-
-    .service-price {
-        color: var(--primary-pink);
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-
-    /* Braiding Services */
-    .braiding-services {
-        background-color: var(--dark-gray);
-        color: var(--white);
-        padding: 5rem 0;
-    }
-
-    .braids-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .braid-type {
-        background-color: var(--medium-gray);
-        padding: 1.5rem;
-        border-radius: 8px;
-        text-align: center;
-    }
-
-    .braid-type i {
-        font-size: 2.5rem;
-        color: var(--primary-pink);
-        margin-bottom: 1rem;
-    }
-
-    /* Booking Section */
-    .booking {
-        padding: 5rem 0;
-        background-color: var(--white);
-        color: var(--dark-gray);
-    }
-
-    .booking-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-    }
-
-    .booking-form {
-        background-color: var(--light-gray);
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-        text-align: left;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        width: 100%;
-        padding: 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 1rem;
-    }
-
-    @media (max-width: 768px) {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Styles | Professional Hairdressing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #e91e63;
+            --dark-pink: #c2185b;
+            --dark-gray: #2c2c2c;
+            --light-gray: #f5f5f5;
+            --medium-gray: #424242;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
         .header-container {
-            flex-direction: column;
-            align-items: flex-start;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-pink);
+        }
+        
+        .logo span {
+            color: var(--white);
+        }
+        
         nav ul {
-            flex-direction: column;
+            display: flex;
+            list-style: none;
         }
+        
         nav ul li {
-            margin: 0.5rem 0;
+            margin-left: 1.5rem;
         }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-pink);
+        }
+        
         .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 44, 44, 0.7), rgba(44, 44, 44, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-pink);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-pink);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: var(--medium-gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-content p {
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .service-price {
+            color: var(--primary-pink);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Braiding Services Highlight */
+        .braiding-services {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 5rem 0;
+        }
+        
+        .braiding-services .section-title h2 {
+            color: var(--white);
+        }
+        
+        .braiding-services .section-title p {
+            color: #ccc;
+        }
+        
+        .braids-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .braid-type {
+            background-color: var(--medium-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .braid-type i {
+            font-size: 2.5rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+        }
+        
+        .braid-type h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Booking Section */
+        .booking {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .booking-form {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
             display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .booking-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        .booking-info p {
+            margin-bottom: 1.5rem;
+            color: var(--medium-gray);
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item i {
+            color: var(--primary-pink);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary-pink);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-pink);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--medium-gray);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-pink);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--medium-gray);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .close-modal {
             position: absolute;
             top: 1rem;
             right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
         }
-        .hero h1 {
-            font-size: 8vw;
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
         }
-        .booking-container {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Elegant<span>Styles</span></div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#braiding">Braiding</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<header>
-    <div class="container header-container">
-        <div class="logo">Elegant<span>Styles</span></div>
-        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#braiding">Braiding</a></li>
-                <li><a href="#booking">Book Now</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Professional Hairdressing for All Hair Types</h1>
+            <p>Specializing in braiding services for natural hair, along with a full range of styling options for every client.</p>
+            <a href="#booking" class="btn">Book an Appointment</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a comprehensive range of hair services for both black and white clients, ensuring everyone leaves our salon feeling beautiful and confident.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Braiding Services</h3>
+                        <p>Professional braiding for all hair types including box braids, cornrows, twists, and more.</p>
+                        <div class="service-price">Starting at $80</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1560869713-7d0a0b47e32e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Haircuts & Styling</h3>
+                        <p>Precision cuts and styling for men, women, and children of all hair types.</p>
+                        <div class="service-price">Starting at $35</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Color & Highlights</h3>
+                        <p>Expert coloring services including highlights, balayage, and color correction.</p>
+                        <div class="service-price">Starting at $75</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1593705114312-a0ee03a3f7d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Treatments & Conditioning</h3>
+                        <p>Deep conditioning and treatment services to restore and maintain healthy hair.</p>
+                        <div class="service-price">Starting at $45</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Braiding Services Section -->
+    <section class="braiding-services" id="braiding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Specialized Braiding Services</h2>
+                <p>We take pride in our expertise with natural hair and offer a wide variety of braiding styles.</p>
+            </div>
+            <div class="braids-grid">
+                <div class="braid-type">
+                    <i class="fas fa-grip-lines"></i>
+                    <h3>Box Braids</h3>
+                    <p>Classic and versatile protective style</p>
+                </div>
+                <div class="braid-type">
+                    <i class="fas fa-braille"></i>
+                    <h3>Cornrows</h3>
+                    <p>Traditional and creative patterns</p>
+                </div>
+                <div class="braid-type">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Goddess Braids</h3>
+                    <p>Elegant and intricate styles</p>
+                </div>
+                <div class="braid-type">
+                    <i class="fas fa-infinity"></i>
+                    <h3>Twists</h3>
+                    <p>Two-strand and Senegalese twists</p>
+                </div>
+                <div class="braid-type">
+                    <i class="fas fa-arrows-alt-h"></i>
+                    <h3>Fulani Braids</h3>
+                    <p>Cultural and decorative styles</p>
+                </div>
+                <div class="braid-type">
+                    <i class="fas fa-asterisk"></i>
+                    <h3>Knotless Braids</h3>
+                    <p>Gentle on the scalp and natural-looking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Your Appointment</h2>
+                <p>Schedule your visit to our salon and experience professional hair care tailored to your needs.</p>
+            </div>
+            <div class="booking-container">
+                <div class="booking-form">
+                    <form id="appointment-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Select Service</label>
+                            <select id="service" name="service" required>
+                                <option value="">Choose a service</option>
+                                <option value="braiding">Braiding Services</option>
+                                <option value="haircut">Haircut & Styling</option>
+                                <option value="color">Color & Highlights</option>
+                                <option value="treatment">Hair Treatment</option>
+                                <option value="consultation">Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <select id="time" name="time" required>
+                                <option value="">Select a time</option>
+                                <option value="9:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Notes</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Book Appointment</button>
+                    </form>
+                </div>
+                <div class="booking-info">
+                    <h3>Why Choose Us?</h3>
+                    <p>Our salon is dedicated to providing exceptional service for all hair types. We specialize in braiding for natural hair while offering a full range of services for every client.</p>
+                    <p>Our experienced stylists stay current with the latest techniques and trends to ensure you receive the best possible care for your hair.</p>
+                    
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Beauty Street, Hairville, HV 12345</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@elegantstyles.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 9am-7pm, Sun: 10am-4pm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Elegant Styles</h3>
+                    <p>Professional hairdressing services for all hair types, specializing in braiding for natural hair.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#braiding">Braiding Services</a></li>
+                        <li><a href="#booking">Book Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Braiding</a></li>
+                        <li><a href="#">Haircuts & Styling</a></li>
+                        <li><a href="#">Color & Highlights</a></li>
+                        <li><a href="#">Treatments</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, Hairville</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@elegantstyles.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Elegant Styles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Appointment Request Received!</h2>
+            <p>Thank you for booking with Elegant Styles. We have received your appointment request and will contact you shortly to confirm your booking.</p>
+            <p>You will receive a confirmation email with your appointment details.</p>
+            <button class="btn" id="close-success">Close</button>
+        </div>
     </div>
-</header>
 
-<section class="hero" id="home">
-    <div class="container">
-        <h1>Professional Hairdressing for All Hair Types</h1>
-        <p>Specializing in braiding services for natural hair, along with a full range of styling options for every client.</p>
-        <a href="#booking" class="btn">Book an Appointment</a>
-    </div>
-</section>
-
-<script>
-    document.getElementsByTagName("h1")[0].style.fontSize = "6vw";
-</script>
-
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // Form Submission
+        const appointmentForm = document.getElementById('appointment-form');
+        const successModal = document.getElementById('success-modal');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const closeSuccessBtn = document.getElementById('close-success');
+        
+        appointmentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // In a real implementation, you would send this data to a server
+            // For this demo, we'll just show the success modal
+            successModal.style.display = 'flex';
+            
+            // Reset the form
+            appointmentForm.reset();
+        });
+        
+        // Close modal functions
+        closeModalBtn.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+        
+        closeSuccessBtn.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
+            }
+        });
+        
+        // Set minimum date for booking to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+    </script>
 </body>
 </html>
