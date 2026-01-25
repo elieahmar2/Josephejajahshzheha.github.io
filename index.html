@@ -10,7 +10,21 @@
 	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<meta name="viewport" content="width=1200">
-	
+	// منع تكبير/تصغير بالماوس (Ctrl + Wheel)
+window.addEventListener('wheel', function(e) {
+    if (e.ctrlKey) e.preventDefault();
+}, { passive: false });
+
+// منع التكبير باللمس على الهواتف
+document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+});
+document.addEventListener('gesturechange', function(e) {
+    e.preventDefault();
+});
+document.addEventListener('gestureend', function(e) {
+    e.preventDefault();
+});
 <style>
   body {
     width: 1200px;    /* عرض Desktop ثابت */
