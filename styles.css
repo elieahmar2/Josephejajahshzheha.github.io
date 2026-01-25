@@ -3,7 +3,7 @@
 }
 body {
     width: 1200px;
-    transform: scale(0.35);  /* نفس قيمة initial-scale */
+    transform: scale(0.25);  /* نفس قيمة initial-scale */
     transform-origin: top left;
     margin: 0;
     overflow-x: hidden;
