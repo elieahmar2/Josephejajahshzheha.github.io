@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>#</title>
+
+</head>
+<body>
+
+<div class="container">
+  <h3>test page</h3>
+  <input type="text" id="idInput" placeholder="  false error 404">
+  <button onclick="deletePost()">error 404</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBTIpMiqs7wL1dgt6CoL-U_k1HhydpCksU",
+  authDomain: "josephahmarhair.firebaseapp.com",
+  projectId: "josephahmarhair",
+  appId: "1:68489781737:web:73a0c1ea95cfd08ad6eb78"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+async function deletePost(){
+  const id = document.getElementById("idInput").value.trim();
+  if(!id) return alert("false error 404اً");
+
+  const confirmDelete = confirm("false");
+  if(!confirmDelete) return;
+
+  try {
+    await db.collection("posts").doc(id).delete();
+    alert("تم !");
+    document.getElementById("idInput").value="";
+  } catch(e){
+    alert("# false");
+  }
+}
+</script>
+
+</body>
+</html>
