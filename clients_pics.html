@@ -339,14 +339,17 @@ async function uploadPost(){
     const base64 = await compressImage(file, 1024, 0.7); // ضغط الصورة
 
     await db.collection("posts").add({
-      name,
-      image: base64,
-      approved:true,
-      created: Date.now()
-    });
+  name,
+  image: base64,
+  approved:true,
+  created: Date.now()
+});
 
-    showLoading(false);
-    showStatus("تم رفع الصورة بنجاح!",true);
+showLoading(false);
+showStatus("تم", true);
+setTimeout(()=>{
+  window.location.href = "feedback.html";
+},1500);
 
     preview.src = "";
     preview.style.display="none";
