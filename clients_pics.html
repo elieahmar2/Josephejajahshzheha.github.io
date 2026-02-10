@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Instagram Full Image Feed</title>
+<title>Instagram Full Image Feed - Dark Mode</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style>
 :root {
-  --bg-light: #222222;
-  --primary: #d99e45;
-  --text-primary: #ffffff;
+  --bg-light: #222222; /* بني داكن جدا */
+  --primary: #d99e45;  /* لون العناصر البارزة */
+  --text-primary: #ffffff; /* نص أبيض */
   --max-width-post: 489px;
   --preview-size: 128px;
   --preview-border: 2px solid var(--primary);
@@ -20,6 +20,7 @@ html, body {
   margin:0; padding:0;
   font-family: "Montserrat", sans-serif;
   background-color: var(--bg-light);
+  color: var(--text-primary);
 }
 
 body {
@@ -34,12 +35,12 @@ body {
 .upload-section {
   width: 60%;
   max-width: var(--max-width-post);
-  background:#fff;
+  background:#333333;
   border:1px solid var(--primary);
   border-radius:20px;
   padding:16px;
   margin:20px auto;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  box-shadow:0 4px 10px rgba(0,0,0,0.5);
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -57,7 +58,7 @@ body {
   align-items:center;
   cursor:pointer;
   margin-bottom:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  box-shadow:0 4px 10px rgba(0,0,0,0.4);
   transition: transform 0.2s;
 }
 .upload-icon:hover { transform: scale(1.1); }
@@ -81,6 +82,8 @@ body {
   border:1px solid var(--primary);
   text-align:center;
   display:none;
+  background:#2b2b2b;
+  color: var(--text-primary);
 }
 
 .upload-section button {
@@ -94,7 +97,7 @@ body {
   cursor:pointer;
 }
 .upload-section button:disabled {
-  background-color:#ccc;
+  background-color:#f99e45;
   cursor:not-allowed;
 }
 
@@ -102,14 +105,15 @@ body {
 .instagram {
   width:99%;
   max-width: var(--max-width-post);
-  background-color: var(--bg-light);
+  background-color: #333333;
   border:1px solid var(--primary);
   border-radius:20px;
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  box-shadow:0 4px 10px rgba(0,0,0,0.5);
   margin-bottom:20px;
+  color: var(--text-primary);
 }
 
 .instagram__header {
@@ -140,9 +144,9 @@ body {
   bottom:5px; left:50%;
   transform:translateX(-50%);
   font-size:10%;
-  color:#000;
+  color:#fff;
   opacity:0.5;
-  background: rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.3);
   padding:2px 4px;
   border-radius:3px;
 }
@@ -164,7 +168,7 @@ body {
 /* Loading overlay */
 #loadingOverlay {
   position: fixed; top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.7);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -190,7 +194,7 @@ body {
   position: fixed;
   top: 20px; left:50%;
   transform: translateX(-50%);
-  background:#4caf50;
+  background:#d99e45;
   color:#fff;
   padding:12px 20px;
   border-radius:10px;
