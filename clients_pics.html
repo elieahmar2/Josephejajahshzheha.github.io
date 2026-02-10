@@ -215,7 +215,13 @@ body {
   #feed {
     grid-template-columns: repeat(3, 1fr); /* 3 بوستات بالصف */
   }
-}
+  @media (min-width: 768px) {
+  #feed {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1500px;  /* عرض 3 بوستات + فراغ */
+    margin: 0 auto;     /* يوسّط البوستات */
+  }
+  }
 </style>
 </head>
 <body>
