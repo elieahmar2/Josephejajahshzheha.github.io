@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Feedback</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{--bg:#222;--primary:#d99e45;--text:#fff}
+*{box-sizing:border-box;font-family:Arial}
+html,body{width:100%;height:100%}
+body{margin:0;background:var(--bg);color:var(--text)}
+.container{width:100%;min-height:100vh;padding:16px;display:flex;flex-direction:column;justify-content:center}
+h1{font-size:20px;margin-bottom:8px;color:var(--primary)}
+h2{font-size:13px;font-weight:normal;margin-bottom:20px;opacity:.8}
+.view-link{display:inline-block;border:1px solid var(--primary);padding:8px 16px;border-radius:24px;color:var(--primary);text-decoration:none;font-size:14px;margin-left:10px}
+form{display:flex;flex-direction:column;gap:16px}
+input,select,textarea,button{background:#111;border:1px solid #333;color:var(--text);padding:16px;border-radius:8px;font-size:17px}
+input[type="text"], input[type="tel"], input[type="email"]{width:100%}
+button{background:var(--primary);color:#000;border:none;cursor:pointer}
+#emailField{display:none}
+.phone-group{display:flex;gap:8px;align-items:center}
+.phone-group input, .phone-group select{flex:1;text-align:center;border:1px solid var(--primary)}
+.phone-group span{color:var(--text)}
+.success{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0009;opacity:0;pointer-events:none;transition:.3s}
+.success.show{opacity:1}
+.check{width:80px;height:80px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;animation:pop .5s}
+.check svg{width:40px;height:40px;stroke:#000;stroke-width:6;fill:none}
+@keyframes pop{0%{transform:scale(.3)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>
+Image uploaded successfully
+<a class="view-link" href="Clients_pics.html">View image | مشاهدة الصورة</a>
+</h1>
+<h2>تم رفع الصورة بنجاح</h2>
+
+<form id="feedbackForm">
+<input type="hidden" name="access_key" value="5d749da4-f0a0-4f5d-bd45-cfc884850e55">
+
+<input type="text" name="name" placeholder="Name | الاسم" required>
+
+<select name="service" required>
+<option value="cut">Cut</option>
+<option value="brushing">Brushing</option>
+<option value="wavy">Wavy</option>
+<option value="coloring">Coloring</option>
+<option value="ombre">Ombre Hair</option>
+<option value="highlights">Highlights</option>
+<option value="lowlights">Lowlights</option>
+<option value="collagen_keratin">Collagen and Keratin</option>
+<option value="fade">Fade</option>
+<option value="taper">Taper</option>
+<option value="buzz">Buzz Cut</option>
+<option value="crew">Crew Cut</option>
+<option value="undercut">Undercut</option>
+<option value="pompadour">Pompadour</option>
+<option value="slick_back">Slick Back</option>
+<option value="fringe">Fringe</option>
+<option value="quiff">Quiff</option>
+<option value="mohawk">Mohawk</option>
+<option value="afro">Afro</option>
+<option value="braids">Braids</option>
+<option value="twists">Twists</option>
+<option value="dreadlocks">Dreadlocks</option>
+<option value="beard_trim">Beard Trim</option>
+<option value="beard_shape">Beard Shaping</option>
+<option value="hot_towel">Hot Towel Shave</option>
+<option value="hair_treatment">Hair Treatment</option>
+<option value="scalp_care">Scalp Care</option>
+<option value="kids_cut">Kids Cut</option>
+<option value="styling">Styling</option>
+<option value="hair_wash">Hair Wash</option>
+<option value="blow_dry">Blow Dry</option>
+</select>
+
+<div class="phone-group">
+<input type="text" value="961" readonly>
+<select name="phone2" id="phone2" required>
+  <option value="" disabled selected> ▼ </option>
+  <option value="03">03</option>
+  <option value="70">70</option>
+  <option value="71">71</option>
+  <option value="76">76</option>
+  <option value="78">78</option>
+  <option value="79">79</option>
+  <option value="81">81</option>
+</select>
+<input type="text" name="phone3" id="phone3" maxlength="3" placeholder="000" required>
+<span>-</span>
+<input type="text" name="phone4" id="phone4" maxlength="3" placeholder="000" required>
+</div>
+
+<select id="emailStatus" name="email_status">
+<option value="not_available">Email not available | غير متوفر</option>
+<option value="available">Email available | الإيميل متوفر</option>
+</select>
+
+<input id="emailField" type="email" name="email" placeholder="Enter email | أدخل الإيميل">
+
+<!-- Your Opinion as select -->
+<select name="feedback_option" required>
+<option value="" disabled selected>رأيك | you opinion</option>
+<option value="satisfied">Satisfied | راضية</option>
+<option value="neutral">Neutral | راضية إلى حدّ ما</option>
+<option value="not_satisfied">Not satisfied | غير راضية</option>
+</select>
+
+<textarea name="feedback" rows="4" placeholder="اكتب تعليق | you comment"></textarea>
+
+<button type="submit">Send | إرسال</button>
+</form>
+</div>
+
+<div class="success" id="success">
+<div class="check">
+<svg viewBox="0 0 52 52"><path d="M14 27l7 7 17-17"/></svg>
+</div>
+</div>
+
+<script>
+const emailStatus=document.getElementById('emailStatus')
+const emailField=document.getElementById('emailField')
+emailStatus.onchange=()=>{emailField.style.display=emailStatus.value==='available'?'block':'none';emailField.required=emailStatus.value==='available'}
+
+// Phone input logic
+const phone2=document.getElementById('phone2')
+const phone3=document.getElementById('phone3')
+const phone4=document.getElementById('phone4')
+
+phone2.onchange = () => {
+  phone3.value = ''
+  phone3.focus()
+}
+
+phone3.addEventListener('input', () => {
+  if(phone3.value.length === 3){
+    phone4.focus()
+  }
+})
+
+document.getElementById('feedbackForm').onsubmit=e=>{
+e.preventDefault()
+fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(e.target)})
+document.getElementById('success').classList.add('show')
+setTimeout(()=>location.href='Clients_pics.html',1500)
+}
+</script>
+</body>
+</html>
