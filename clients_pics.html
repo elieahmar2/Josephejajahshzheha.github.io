@@ -285,7 +285,9 @@ fileInput.addEventListener("change", e => {
 });
 
 nameInput.addEventListener("input", checkReady);
-function checkReady(){ postBtn.disabled = !(fileInput.files.length>0 && nameInput.value.trim().length>0); }
+function checkReady(){ 
+  postBtn.disabled = !(fileInput.files.length>0 && nameInput.value.trim().length>0); 
+}
 
 function showLoading(show=true){
   document.getElementById("loadingOverlay").style.display = show?"flex":"none";
@@ -298,6 +300,17 @@ function showStatus(msg, success=true){
   setTimeout(()=>{ el.style.display="none"; },2000);
 }
 
+// قراءة الملف بطريقة async لتجنب توقف iPhone
+function readFileAsync(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// رفع الصورة مع تحسين لأجهزة iPhone
 async function uploadPost(){
   const file = fileInput.files[0];
   const name = nameInput.value.trim();
@@ -306,28 +319,25 @@ async function uploadPost(){
   showLoading(true);
 
   try{
-    const reader = new FileReader();
-    reader.onload = async function(e){
-      const base64 = e.target.result;
-      await new Promise(res=>setTimeout(res,1200));
-      await db.collection("posts").add({
-        name,
-        image: base64,
-        approved:true,
-        created: Date.now()
-      });
+    const base64 = await readFileAsync(file);
 
-      showLoading(false);
-      showStatus("تم رفع الصورة بنجاح!",true);
+    await db.collection("posts").add({
+      name,
+      image: base64,
+      approved:true,
+      created: Date.now()
+    });
 
-      preview.src = "";
-      preview.style.display="none";
-      fileInput.value="";
-      nameInput.value="";
-      nameInput.style.display="none";
-      postBtn.disabled=true;
-    };
-    reader.readAsDataURL(file);
+    showLoading(false);
+    showStatus("تم رفع الصورة بنجاح!",true);
+
+    preview.src = "";
+    preview.style.display="none";
+    fileInput.value="";
+    nameInput.value="";
+    nameInput.style.display="none";
+    postBtn.disabled=true;
+
   } catch(err){
     showLoading(false);
     showStatus("فشل الرفع، جرب مرة أخرى",false);
