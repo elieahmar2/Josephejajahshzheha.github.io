@@ -203,6 +203,19 @@ body {
   z-index:1001;
 }
 #statusMsg.error { background:#e53935; }
+#feed {
+  display: grid;
+  grid-template-columns: 1fr; /* افتراضي موبايل: بوست واحد */
+  gap: 20px; /* المسافة بين البوستات */
+  justify-items: center;
+}
+
+/* شاشات أكبر من 768px (اللابتوب) */
+@media (min-width: 768px) {
+  #feed {
+    grid-template-columns: repeat(3, 1fr); /* 3 بوستات بالصف */
+  }
+}
 </style>
 </head>
 <body>
