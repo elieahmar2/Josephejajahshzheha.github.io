@@ -144,7 +144,7 @@ document.getElementById('feedbackForm').onsubmit=e=>{
 e.preventDefault()
 fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(e.target)})
 document.getElementById('success').classList.add('show')
-setTimeout(()=>location.href='Clients_pics.html',1500)
+setTimeout(()=>location.href='clients_pics.html',1500)
 }
 </script>
 </body>
