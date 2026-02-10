@@ -72,6 +72,18 @@
             line-height: 1.6;
             touch-action: manipulation; /* لمنع ظهور الكيبورد تلقائياً على الجوال */
         }
+        body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* يمنع الزوائد على اليمين */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
         
         .logo img {
             width: 120px;
@@ -218,6 +230,14 @@
             transition: transform 0.3s;
         }
         
+        .services-grid,
+.braids-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    overflow: hidden;
+}
+
         .service-card:hover {
             transform: translateY(-5px);
         }
@@ -317,16 +337,15 @@
             font-weight: 500;
         }
         
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            touch-action: manipulation; /* لمنع ظهور الكيبورد تلقائياً */
-        }
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
         
         .booking-info h3 {
             font-size: 2rem;
@@ -524,6 +543,7 @@
                     <li><a href="#products">Products</a></li>
                     <li><a href="#booking">Book Now</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="clients_pics.html">Clients</a></li>
                 </ul>
             </nav>
         </div>
